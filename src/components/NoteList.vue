@@ -1,10 +1,12 @@
 <template>
-  <NoteListItem
-    v-for="note in notes"
-    :key="note.id"
-    :note="note"
-    class="py-3 px-4 my-4 | border rounded-full bg-green-100 | cursor-pointer"
-  />
+  <transition-group name="list-complete">
+    <NoteListItem
+      v-for="note in notes"
+      :key="note.id"
+      :note="note"
+      class="list-complete-item | py-3 px-4 my-4 | border rounded-full bg-green-100 | cursor-pointer"
+    />
+  </transition-group>
 </template>
 
 <script>
@@ -25,3 +27,17 @@ export default {
   },
 };
 </script>
+
+<style>
+.list-complete-item {
+  transition: all 0.8s ease;
+}
+.list-complete-enter-from,
+.list-complete-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-complete-leave-active {
+  position: relative;
+}
+</style>

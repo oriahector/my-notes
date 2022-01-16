@@ -13,11 +13,9 @@ import {
   orderBy,
   doc,
   collection,
-  getDocs,
   setDoc,
   deleteDoc,
   updateDoc,
-  addDoc,
 } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-librariess
@@ -46,12 +44,10 @@ export {
   signInWithPopup,
   GoogleAuthProvider,
   db,
-  addDoc,
   updateDoc,
   doc,
   deleteDoc,
   collection,
-  getDocs,
   setDoc,
   orderBy,
   onSnapshot,

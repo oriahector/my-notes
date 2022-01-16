@@ -9,11 +9,9 @@ import {
   doc,
   onSnapshot,
   setDoc,
-  //addDoc,
   updateDoc,
   collection,
   deleteDoc,
-  // getDocs,
 } from "../firebase";
 
 export default createStore({
@@ -30,6 +28,7 @@ export default createStore({
     getNoteTitle: (state) => (noteId) => {
       const id = noteId ? noteId : state.activeNote;
       const body = state.notes.find((note) => note.id === id).body;
+      console.log(body);
       return body.substring(0, 20);
     },
     getNotesBySearchTerm: (state) => {
@@ -73,7 +72,6 @@ export default createStore({
     },
 
     async updateNote({ state }, { id, body }) {
-      console.log(body);
       try {
         await updateDoc(doc(db, "users", state.user.uid, "notes", id), {
           body,
@@ -115,7 +113,6 @@ export default createStore({
           });
         });
         commit("setNotes", notes);
-        console.log("Current cities in CA: ", notes.join(", "));
       });
 
       // let notes = [];
